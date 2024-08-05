@@ -5,3 +5,22 @@
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
+.card img{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+}
+.card h3{
+    margin: 10px 0;
+}
+.card p{
+    margin: 10px 0;
+}
+.card a{
+    display: inline-block;
+    padding: 5px 10px;
+    background: #007bff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+}
