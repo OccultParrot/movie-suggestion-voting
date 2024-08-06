@@ -4,45 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Voting Website</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.8.1/dist/css/foundation.min.css" crossorigin="anonymous">
 </head>
 <body>
     <header>
         <h1>Movie Voting Website</h1>
     </header>
-    <div class="suggest-movie">
+    <form class="suggest-movie">
         <h2>Suggest a Movie</h2>
         <input type="text" id="movieName" placeholder="Enter movie name">
         <button onclick="suggestMovie()">Suggest</button>
-    </div>
-    <div class="movie-list">
-        <div class="movie">
+    </form>
+    <section class="movie-list">
+        <section class="movie">
             <h2>Movie Title 1</h2>
             <p>Movie description goes here...</p>
-            <div class="vote-buttons">
+            <form="vote-buttons">
                 <button class="upvote">Thumbs up</button>
                 <button class="downvote">Thumbs down</button>
-            </div>
-        </div>
-        <div class="movie">
+            </form>
+        </section>
+        <section class="movie">
             <h2>Movie Title 2</h2>
             <p>Movie description goes here...</p>
-            <div class="vote-buttons">
+            <form class="vote-buttons">
                 <button class="upvote">Thumbs up</button>
                 <button class="downvote">Thumbs down</button>
-            </div>
-        </div>
-        <div class="movie">
+            </form>
+        </section>
+        <section class="movie">
             <h2>Movie Title 3</h2>
             <p>Movie description goes here...</p>
-            <div class="vote-buttons">
+            <form class="vote-buttons">
                 <button class="upvote">Thumbs up</button>
-                <button class="downvote">Thumbs down </button>            </div>
-        </div>
-    </div>
+                <button class="downvote">Thumbs down </button>            </form>
+            </section>
+    </section>
     <footer>
         <p> Brought to you by the genious minds of Thomas , Sabrin ,Oliver </p>
     </footer>
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 </html>
