@@ -22,8 +22,8 @@ function movieListRefresh() {
         titleEl.textContent = movie.title;
         descriptionEl.textContent = movie.description;
         // TODO: Find better icons for upvote and downvote
-        upVoteEl.textContent = "⬆";
-        downVoteEl.textContent = "⬇";
+        upVoteEl.innerHTML = "&#128077";
+        downVoteEl.innerHTML = "&#128078";
 
         voteButtonsEl.appendChild(upVoteEl);
         voteButtonsEl.appendChild(downVoteEl);
