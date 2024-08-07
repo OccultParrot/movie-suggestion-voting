@@ -42,14 +42,34 @@ function movieListRefresh() {
 // TODO: Finish the voting system
 const upVote = function (event) {
     event.preventDefault();
+    
     const movieEl = event.currentTarget.parentElement.parentElement;
-    console.log("Upvoted movies ID is: " + movieEl.dataset.id);
+    const movieArray = JSON.parse(localStorage.getItem("MovieArray"));
+
+    for (const movie of movieArray) {
+        if (movie.id == movieEl.dataset.id) {
+            movie.points++;
+            movie.votes++;
+        }
+    }
+
+    localStorage.setItem("MovieArray", JSON.stringify(movieArray));
 }
 
 const downVote = function (event) {
     event.preventDefault();
+
     const movieEl = event.currentTarget.parentElement.parentElement;
-    console.log("Downvoted movies ID is: " + movieEl.dataset.id);
+    const movieArray = JSON.parse(localStorage.getItem("MovieArray"));
+
+    for (const movie of movieArray) {
+        if (movie.id == movieEl.dataset.id) {
+            movie.points--;
+            movie.votes++;
+        }
+    }
+
+    localStorage.setItem("MovieArray", JSON.stringify(movieArray));
 }
 
 const suggestMovie = function (event) {
