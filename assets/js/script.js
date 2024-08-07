@@ -39,7 +39,6 @@ function movieListRefresh() {
     });
 }
 
-// TODO: Finish the voting system
 const upVote = function (event) {
     event.preventDefault();
     
@@ -50,6 +49,8 @@ const upVote = function (event) {
         if (movie.id == movieEl.dataset.id) {
             movie.points++;
             movie.votes++;
+            // We break so that if they have a LOT of movies it doesn't have to go through them ALL unless its the last one lol
+            break;
         }
     }
 
@@ -66,6 +67,8 @@ const downVote = function (event) {
         if (movie.id == movieEl.dataset.id) {
             movie.points--;
             movie.votes++;
+            // We break so that if they have a LOT of movies it doesn't have to go through them ALL unless its the last one lol
+            break;
         }
     }
 
