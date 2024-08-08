@@ -6,6 +6,7 @@ function movieListRefresh() {
     movieListEl.innerHTML = "";
     movieArray.forEach(movie => {
         const movieEl = document.createElement("section");
+        movieEl.dataset.id = movie.id;
         movieEl.classList.add("movie");
 
         const titleEl = document.createElement("h2");
@@ -16,14 +17,17 @@ function movieListRefresh() {
 
         const upVoteEl = document.createElement("button");
         upVoteEl.classList.add("upvote");
+        upVoteEl.addEventListener("click", upVote)
+
         const downVoteEl = document.createElement("button");
         downVoteEl.classList.add("downvote");
+        downVoteEl.addEventListener("click", downVote);
 
         titleEl.textContent = movie.title;
         descriptionEl.textContent = movie.description;
         // TODO: Find better icons for upvote and downvote
-        upVoteEl.textContent = "⬆";
-        downVoteEl.textContent = "⬇";
+        upVoteEl.innerHTML = "&#128077";
+        downVoteEl.innerHTML = "&#128078";
 
         voteButtonsEl.appendChild(upVoteEl);
         voteButtonsEl.appendChild(downVoteEl);
@@ -32,26 +36,67 @@ function movieListRefresh() {
         movieEl.appendChild(descriptionEl);
         movieEl.appendChild(voteButtonsEl);
         movieListEl.appendChild(movieEl);
-
     });
 }
 
-// TODO: Make the voting system
+const upVote = function (event) {
+    event.preventDefault();
+    
+    const movieEl = event.currentTarget.parentElement.parentElement;
+    const movieArray = JSON.parse(localStorage.getItem("MovieArray"));
+
+    for (const movie of movieArray) {
+        if (movie.id == movieEl.dataset.id) {
+            movie.points++;
+            movie.votes++;
+            // We break so that if they have a LOT of movies it doesn't have to go through them ALL unless its the last one lol
+            break;
+        }
+    }
+
+    localStorage.setItem("MovieArray", JSON.stringify(movieArray));
+}
+
+const downVote = function (event) {
+    event.preventDefault();
+
+    const movieEl = event.currentTarget.parentElement.parentElement;
+    const movieArray = JSON.parse(localStorage.getItem("MovieArray"));
+
+    for (const movie of movieArray) {
+        if (movie.id == movieEl.dataset.id) {
+            movie.points--;
+            movie.votes++;
+            // We break so that if they have a LOT of movies it doesn't have to go through them ALL unless its the last one lol
+            break;
+        }
+    }
+
+    localStorage.setItem("MovieArray", JSON.stringify(movieArray));
+}
 
 const suggestMovie = function (event) {
     event.preventDefault();
-    const movieArry = JSON.parse(localStorage.getItem("MovieArray")) || [];
+    if (movieSuggestionForm.querySelector("#movieName").value == "") 
+        return;
 
+    const movieArry = JSON.parse(localStorage.getItem("MovieArray")) || [];
     const movieTitle = movieSuggestionForm.querySelector("#movieName").value;
     const movieDescription = movieSuggestionForm.querySelector("#movieDescription").value;
-    if (movieTitle == "") 
-        return;
+
+
+    let nextID = Number.parseInt(localStorage.getItem("nextID")) || 0;
+    const ID = nextID++;
+    localStorage.setItem("nextID", nextID);
+    console.log(nextID);
     const movie = {
-        points: 0,
-        votes: 0,
+        id: ID,
         title: movieTitle,
-        description: movieDescription
+        description: movieDescription,
+        points: 0,
+        votes: 0
     };
+
     movieArry.push(movie);
     localStorage.setItem("MovieArray", JSON.stringify(movieArry));
     console.log(movieArry);
@@ -62,6 +107,7 @@ const suggestMovie = function (event) {
 
 const clearMovies = function (event) {
     event.preventDefault();
+    localStorage.setItem("nextID", "0");
     localStorage.removeItem("MovieArray");
     movieListRefresh();
 }
