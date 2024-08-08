@@ -8,6 +8,8 @@ function movieListRefresh() {
         const movieEl = document.createElement("section");
         movieEl.dataset.id = movie.id;
         movieEl.classList.add("movie");
+        movieEl.classList.add("section");
+        
 
         const titleEl = document.createElement("h2");
         const descriptionEl = document.createElement("p");
@@ -25,7 +27,6 @@ function movieListRefresh() {
 
         titleEl.textContent = movie.title;
         descriptionEl.textContent = movie.description;
-        // TODO: Find better icons for upvote and downvote
         upVoteEl.innerHTML = "&#128077";
         downVoteEl.innerHTML = "&#128078";
 
@@ -49,6 +50,9 @@ const upVote = function (event) {
         if (movie.id == movieEl.dataset.id) {
             movie.points++;
             movie.votes++;
+            // TODO: Remove this testing console.log
+            console.log(`Upvoted ${movie.title}. Current score: ${movie.points}, Total votes: ${movie.votes}.\n[THIS CONSOLE LOG IS FOR TESTING PURPOSES AND WILL BE REMOVED]`)
+            
             // We break so that if they have a LOT of movies it doesn't have to go through them ALL unless its the last one lol
             break;
         }
@@ -67,6 +71,9 @@ const downVote = function (event) {
         if (movie.id == movieEl.dataset.id) {
             movie.points--;
             movie.votes++;
+            // TODO: Remove this testing console.log
+            console.log(`Downvoted ${movie.title}. Current score: ${movie.points}, Total votes: ${movie.votes}.\n[THIS CONSOLE LOG IS FOR TESTING PURPOSES AND WILL BE REMOVED]`)
+            
             // We break so that if they have a LOT of movies it doesn't have to go through them ALL unless its the last one lol
             break;
         }
@@ -111,6 +118,8 @@ const clearMovies = function (event) {
     localStorage.removeItem("MovieArray");
     movieListRefresh();
 }
+
+// TODO: Make a way to finish voting
 
 function init() {
     movieListRefresh();
