@@ -5,12 +5,31 @@
     height: 100vh;
     background-color: #007bff;
 }
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #be3131;
+}
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #202932;
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    font-family:'Courier New', Courier, monospace;
 
+}
 .movie-list {
     justify-content: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    background-color: #b61212;
+    color: black;
 }
 
 .movie {
@@ -23,4 +42,13 @@
 
 .movie button {
     margin: 15px;
+    color: rgb(146, 15, 15);
+    background-color: #ff0000;
+    border: none;
+}
+.button{
+    margin: 15px;
+    color: rgb(14, 11, 11);
+    background-color: #b61212;
+    border: none;
 }
