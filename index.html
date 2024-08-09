@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body> 
-    <header>
+    <header class="section is-primary">
         
         <button class="button is-link is-soft"><span class="icon">
             <i class="fas fa-home"></i>
@@ -17,15 +17,17 @@
 
         
     </header>
-    <form class="suggest-movie">
+    <form>
         <h2>Suggest a Movie</h2>
         <input type="text" id="movieName" placeholder="Enter movie name">
         <input type="text" id="movieDescription" placeholder="Optionally enter movie description">
-        <button type ="button" class="button is-link is-soft">Suggest</button> 
-        <button type= "button"clear" class="button rounded bordered shadow alert">Clear Movies</button>
+        <button type ="button" id = "suggest" class="button is-link is-soft">Suggest</button> 
+        <button type= "button" id = "clear" class="button is-danger">Clear Movies</button>
 
     </form>
-    <section class="movie-list">
+    <section>
+        <button class="button is-link"><i class="fa-solid fa-thumbs-up"></i></button>
+         <button class="button is-danger"><i class="fa-solid fa-thumbs-down"></i></button>
         
     </section>
     <footer>
