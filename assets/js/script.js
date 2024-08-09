@@ -9,26 +9,36 @@ function movieListRefresh() {
         movieEl.dataset.id = movie.id;
         movieEl.classList.add("movie");
         movieEl.classList.add("section");
+        movieEl.classList.add("cell");
+        movieEl.classList.add("box");
         
 
         const titleEl = document.createElement("h2");
+        titleEl.classList.add("title");
         const descriptionEl = document.createElement("p");
+        descriptionEl.classList.add("subtitle");
 
         const voteButtonsEl = document.createElement("form");
+        voteButtonsEl.classList.add("form");
         voteButtonsEl.classList.add("vote-buttons");
+        voteButtonsEl.classList.add("box");
 
         const upVoteEl = document.createElement("button");
+        upVoteEl.classList.add("button");
+        upVoteEl.classList.add("is-success");
         upVoteEl.classList.add("upvote");
         upVoteEl.addEventListener("click", upVote)
 
         const downVoteEl = document.createElement("button");
+        downVoteEl.classList.add("button");
+        downVoteEl.classList.add("is-danger");
         downVoteEl.classList.add("downvote");
         downVoteEl.addEventListener("click", downVote);
 
         titleEl.textContent = movie.title;
         descriptionEl.textContent = movie.description;
-        upVoteEl.innerHTML = "&#128077";
-        downVoteEl.innerHTML = "&#128078";
+        upVoteEl.innerHTML = "<i class=\"fa-solid fa-thumbs-up\"></i>";
+        downVoteEl.innerHTML = "<i class=\"fa-solid fa-thumbs-down\"></i>";
 
         voteButtonsEl.appendChild(upVoteEl);
         voteButtonsEl.appendChild(downVoteEl);
