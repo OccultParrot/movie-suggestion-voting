@@ -130,6 +130,25 @@ const clearMovies = function (event) {
 }
 
 // TODO: Make a way to finish voting
+const finishVoting = function (event) {
+    document.querySelector("#finished-voting").setAttribute("display", "block");
+    document.querySelector("#voting").setAttribute("display", "none");
+    const movieList = JSON.parse(localStorage.getItem("MovieArray"));
+    let highestMovie = {
+        points: 0
+    };
+    for (const movie of movieList) {
+        if (movie.points > highestMovie.points) {
+            highestMovie = movie;
+        }
+    }
+    console.log(highestMovie.title);
+}
+
+const resetVoting = function (event) {
+    document.querySelector("#finished-voting").setAttribute("display", "none");
+    document.querySelector("#voting").setAttribute("display", "block");
+}
 
 function init() {
     movieListRefresh();
