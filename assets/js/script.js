@@ -27,13 +27,23 @@ function movieListRefresh() {
         upVoteEl.classList.add("button");
         upVoteEl.classList.add("is-success");
         upVoteEl.classList.add("upvote");
+        upVoteEl.classList.add("voting-button");
         upVoteEl.addEventListener("click", upVote)
 
         const downVoteEl = document.createElement("button");
         downVoteEl.classList.add("button");
         downVoteEl.classList.add("is-danger");
         downVoteEl.classList.add("downvote");
+        downVoteEl.classList.add("voting-button");
         downVoteEl.addEventListener("click", downVote);
+
+        const finalScoreEl = document.createElement("p");
+        finalScoreEl.textContent = `Final Score: ${movie.points}`;
+        finalScoreEl.classList.add("final-score")
+        
+        const totalVotes = document.createElement("p");
+        totalVotes.textContent = `Total Votes: ${movie.votes}`;
+        totalVotes.classList.add("total-votes");
 
         titleEl.textContent = movie.title;
         descriptionEl.textContent = movie.description;
@@ -42,11 +52,15 @@ function movieListRefresh() {
 
         voteButtonsEl.appendChild(upVoteEl);
         voteButtonsEl.appendChild(downVoteEl);
+        voteButtonsEl.appendChild(finalScoreEl);
+        voteButtonsEl.appendChild(totalVotes);
 
         movieEl.appendChild(titleEl);
         movieEl.appendChild(descriptionEl);
         movieEl.appendChild(voteButtonsEl);
         movieListEl.appendChild(movieEl);
+        
+        resetVoting();
     });
 }
 
@@ -67,7 +81,7 @@ const upVote = function (event) {
             break;
         }
     }
-
+    movieListRefresh();
     localStorage.setItem("MovieArray", JSON.stringify(movieArray));
 }
 
@@ -88,7 +102,7 @@ const downVote = function (event) {
             break;
         }
     }
-
+    movieListRefresh();
     localStorage.setItem("MovieArray", JSON.stringify(movieArray));
 }
 
@@ -131,29 +145,54 @@ const clearMovies = function (event) {
 
 // TODO: Make a way to finish voting
 const finishVoting = function (event) {
-    document.querySelector("#finished-voting").setAttribute("display", "block");
-    document.querySelector("#voting").setAttribute("display", "none");
+    document.querySelectorAll(".voting-button").forEach((button) => {button.setAttribute("style", "display: none;")})
+    document.querySelectorAll(".final-score").forEach((button) => {button.setAttribute("style", "display: block;")})
+    document.querySelectorAll(".total-votes").forEach((button) => {button.setAttribute("style", "display: block;")})
+
+    const highestScoreEl = document.querySelector("#least-voted");
+    const lowestScoreEl = document.querySelector("#winning");
+
+    document.querySelector("#finished-voting").setAttribute("style", "display: block");
+    document.querySelector("#voting").setAttribute("style", "display: none");
     const movieList = JSON.parse(localStorage.getItem("MovieArray"));
     let highestMovie = {
         points: 0
     };
+    
     for (const movie of movieList) {
-        if (movie.points > highestMovie.points) {
+        if (movie.points > highestMovie.points)
             highestMovie = movie;
-        }
     }
-    console.log(highestMovie.title);
+
+    let lowestMovie = {
+        points: 9999
+    }
+
+    for (const movie of movieList) {
+        if (movie.points < lowestMovie.points)
+            lowestMovie = movie;
+    }
+
+    highestScoreEl.textContent = `The highest scoring movie was ${highestMovie}`;
+    lowestScoreEl.textContent = ``
 }
 
 const resetVoting = function (event) {
-    document.querySelector("#finished-voting").setAttribute("display", "none");
-    document.querySelector("#voting").setAttribute("display", "block");
+    document.querySelectorAll(".voting-button").forEach((button) => {button.setAttribute("style", "display: inline;")})
+    document.querySelectorAll(".final-score").forEach((button) => {button.setAttribute("style", "display: none;")})
+    document.querySelectorAll(".total-votes").forEach((button) => {button.setAttribute("style", "display: none;")})
+
+    document.querySelector("#finished-voting").setAttribute("style", "display: none;");
+    document.querySelector("#voting").setAttribute("style", "display: block;");
 }
 
 function init() {
+    document.querySelector("#finished-voting").setAttribute("style", "display: none;");
     movieListRefresh();
     movieSuggestionForm.querySelector("#suggest").addEventListener("click", suggestMovie);
     movieSuggestionForm.querySelector("#clear").addEventListener("click", clearMovies);
+    document.querySelector("#reset").addEventListener("click", resetVoting)
+    document.querySelector("#finish-voting").addEventListener("click", finishVoting)
 }
 
 init();
