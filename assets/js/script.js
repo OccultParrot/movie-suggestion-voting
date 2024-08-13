@@ -143,19 +143,26 @@ const clearMovies = function (event) {
     movieListRefresh();
 }
 
-const finishVotingModal =
+const finishVotingModal = function (event) {
+    document.querySelector("#finish-voting-modal").classList.add("is-active");
+}
 
-// TODO: Make a way to finish voting
+const finishVotingAccept = function (event) {
+    document.querySelector("#finish-voting-modal").classList.remove("is-active");
+    finishVoting();
+}
+
 const finishVoting = function (event) {
     document.querySelectorAll(".voting-button").forEach((button) => {button.setAttribute("style", "display: none;")})
     document.querySelectorAll(".final-score").forEach((button) => {button.setAttribute("style", "display: block;")})
     document.querySelectorAll(".total-votes").forEach((button) => {button.setAttribute("style", "display: block;")})
 
-    const highestScoreEl = document.querySelector("#least-voted");
-    const lowestScoreEl = document.querySelector("#winning");
+    const highestScoreEl = document.querySelector("#winning");
+    const lowestScoreEl = document.querySelector("#least-voted");
 
     document.querySelector("#finished-voting").setAttribute("style", "display: block");
     document.querySelector("#voting").setAttribute("style", "display: none");
+
     const movieList = JSON.parse(localStorage.getItem("MovieArray"));
     let highestMovie = {
         points: 0
@@ -175,8 +182,8 @@ const finishVoting = function (event) {
             lowestMovie = movie;
     }
 
-    highestScoreEl.textContent = `The highest voted movie was ${highestMovie.title}`;
-    lowestScoreEl.textContent = `The lowest voted movie was ${lowestMovie.title}`;
+    highestScoreEl.innerHTML = `The highest voted movie was <strong>${highestMovie.title}</strong>`;
+    lowestScoreEl.innerHTML = `The lowest voted movie was <strong>${lowestMovie.title}</strong>`;
 }
 
 const resetVoting = function (event) {
@@ -193,8 +200,10 @@ function init() {
     movieListRefresh();
     movieSuggestionForm.querySelector("#suggest").addEventListener("click", suggestMovie);
     movieSuggestionForm.querySelector("#clear").addEventListener("click", clearMovies);
-    document.querySelector("#reset").addEventListener("click", resetVoting)
-    document.querySelector("#finish-voting").addEventListener("click", finishVoting)
+    document.querySelector("#reset").addEventListener("click", resetVoting);
+    document.querySelector("#finish-voting").addEventListener("click", finishVotingModal);
+    document.querySelector("#finish-voting-deny").addEventListener("click", function () {document.querySelector("#finish-voting-modal").classList.remove("is-active");});
+    document.querySelector("#finish-voting-accept").addEventListener("click", finishVotingAccept);
 }
 
 init();
