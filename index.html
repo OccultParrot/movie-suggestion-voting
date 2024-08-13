@@ -16,23 +16,25 @@
         <h1 class="title">Movie Voting Website</h1>
     </header>
 
-    <section>
+    <section id="finished-voting" class="box section">
         <h1 id="over">Movie voting is over</h1> 
         <h2 id="winning">The winning movie was: </h2> 
-        <h2 id="leasted"> The leasted voted movie was:</h2>
-        <button id="reset"> Voting reset </button> 
+        <h2 id="least-voted"> The leasted voted movie was:</h2>
+        <button id="reset" class="button is-link is-soft"> Voting reset </button> 
     </section>
 
-    <form class="section suggest-movie box">
+    <form class="section suggest-movie box" id="voting">
         <h2 class="title">Suggest a Movie</h2>
         <input class="input" type="text" id="movieName" placeholder="Enter movie name">
         <input class="input" type="text" id="movieDescription" placeholder="Optionally enter movie description">
         <button type ="button" id = "suggest" class="button is-link is-soft">Suggest</button> 
         <button type= "button" id = "clear" class="button is-danger">Clear Movies</button>
-
+        <button type="button" id="finish-voting" class="button is-danger is-pulled-right"><strong>FINISH VOTING</strong></button>
     </form>
     <section class="section movie-list grid is-col-min-15">
     </section>
+
+    
     <footer class="footer has-background-info-light">
         <div class="content has-text-centered">
         <footer> 
