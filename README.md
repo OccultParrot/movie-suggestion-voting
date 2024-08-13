@@ -18,9 +18,11 @@ the user is then able to see the results of the voting poll.
 
 To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
+`assets/images/Movievoting1.jpg`
+`assets/images/Movievoting2.jpg`
+`assets/images/Movievoting3.jpg`
+`assets/images/Movievoting4.jpg`
+
 
 ## Credits
 
