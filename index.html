@@ -1,18 +1,38 @@
 <!DOCTYPE html data-theme="dark">
 <html lang="en" class="theme-light">
-<head>
+<head class="has-text-danger-dark">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Movie Voting Website</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
-<body class="has-background-info-light"> 
+
+<body class="has-background-info-light">
+    <div class="modal is-active">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">WARNING</p>
+          </header>
+          <section class="modal-card-body">
+           <p> Are you sure you are finished voting?</p>
+          </section>
+
+          <footer class="modal-card-foot">
+            <div class="buttons">
+              <button class="button is-success">YES</button>
+              <button class="button is-danger">NO</button>
+            </div>
+          </footer>
+        </div>
+      </div>
+      
     <header class="section is-primary">
         
-        <button class="button is-link is-soft"><span class="icon">
-            <i class="fas fa-lightbulb"></i>
-        </span></button>
-        
+        <button class="button has-background-warning-light"><span class="icon">
+            <i class="fa-solid fa-lightbulb"></i>
+          </span></button>
+
         <h1 class="title">Movie Voting Website</h1>
     </header>
 
@@ -37,14 +57,9 @@
     
     <footer class="footer has-background-info-light">
         <div class="content has-text-centered">
-        <footer> 
         <p> &copy; &copy;TM Movie Voting Website</p>
-    </footer>
-        <footer>
         <p> Made with ❤️ by the brilliant minds of Thomas, Sabrin and Oliver</p>
-    </footer>
     </div>
-
     </footer>
     <script src="assets/js/script.js"></script> 
     <script src="https://kit.fontawesome.com/9b0849a9f8.js" crossorigin="anonymous"></script>
