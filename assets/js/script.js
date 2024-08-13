@@ -143,6 +143,8 @@ const clearMovies = function (event) {
     movieListRefresh();
 }
 
+const finishVotingModal =
+
 // TODO: Make a way to finish voting
 const finishVoting = function (event) {
     document.querySelectorAll(".voting-button").forEach((button) => {button.setAttribute("style", "display: none;")})
@@ -173,8 +175,8 @@ const finishVoting = function (event) {
             lowestMovie = movie;
     }
 
-    highestScoreEl.textContent = `The highest scoring movie was ${highestMovie}`;
-    lowestScoreEl.textContent = ``
+    highestScoreEl.textContent = `The highest voted movie was ${highestMovie.title}`;
+    lowestScoreEl.textContent = `The lowest voted movie was ${lowestMovie.title}`;
 }
 
 const resetVoting = function (event) {
