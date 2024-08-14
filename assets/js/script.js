@@ -28,7 +28,7 @@ function movieListRefresh() {
         upVoteEl.classList.add("is-success");
         upVoteEl.classList.add("upvote");
         upVoteEl.classList.add("voting-button");
-        upVoteEl.addEventListener("click", upVote)
+        upVoteEl.addEventListener("click", upVote);
 
         const downVoteEl = document.createElement("button");
         downVoteEl.classList.add("button");
@@ -39,11 +39,13 @@ function movieListRefresh() {
 
         const finalScoreEl = document.createElement("p");
         finalScoreEl.textContent = `Final Score: ${movie.points}`;
-        finalScoreEl.classList.add("final-score")
+        finalScoreEl.classList.add("final-score");
+        finalScoreEl.classList.add("subtitle");
         
         const totalVotes = document.createElement("p");
         totalVotes.textContent = `Total Votes: ${movie.votes}`;
         totalVotes.classList.add("total-votes");
+        totalVotes.classList.add("subtitle");
 
         titleEl.textContent = movie.title;
         descriptionEl.textContent = movie.description;
@@ -74,9 +76,7 @@ const upVote = function (event) {
         if (movie.id == movieEl.dataset.id) {
             movie.points++;
             movie.votes++;
-            // TODO: Remove this testing console.log
-            console.log(`Upvoted ${movie.title}. Current score: ${movie.points}, Total votes: ${movie.votes}.\n[THIS CONSOLE LOG IS FOR TESTING PURPOSES AND WILL BE REMOVED]`)
-            
+
             // We break so that if they have a LOT of movies it doesn't have to go through them ALL unless its the last one lol
             break;
         }
@@ -95,9 +95,7 @@ const downVote = function (event) {
         if (movie.id == movieEl.dataset.id) {
             movie.points--;
             movie.votes++;
-            // TODO: Remove this testing console.log
-            console.log(`Downvoted ${movie.title}. Current score: ${movie.points}, Total votes: ${movie.votes}.\n[THIS CONSOLE LOG IS FOR TESTING PURPOSES AND WILL BE REMOVED]`)
-            
+
             // We break so that if they have a LOT of movies it doesn't have to go through them ALL unless its the last one lol
             break;
         }
@@ -119,7 +117,6 @@ const suggestMovie = function (event) {
     let nextID = Number.parseInt(localStorage.getItem("nextID")) || 0;
     const ID = nextID++;
     localStorage.setItem("nextID", nextID);
-    console.log(nextID);
     const movie = {
         id: ID,
         title: movieTitle,
@@ -130,7 +127,6 @@ const suggestMovie = function (event) {
 
     movieArry.push(movie);
     localStorage.setItem("MovieArray", JSON.stringify(movieArry));
-    console.log(movieArry);
     movieSuggestionForm.querySelector("#movieName").value = "";
     movieSuggestionForm.querySelector("#movieDescription").value = "";
     movieListRefresh();
@@ -139,6 +135,7 @@ const suggestMovie = function (event) {
 const clearMovies = function (event) {
     event.preventDefault();
     localStorage.setItem("nextID", "0");
+    
     localStorage.removeItem("MovieArray");
     movieListRefresh();
 }
@@ -195,7 +192,54 @@ const resetVoting = function (event) {
     document.querySelector("#voting").setAttribute("style", "display: block;");
 }
 
+function themeCheck() {
+    if (localStorage.getItem("isLightMode") === "true")
+        localStorage.setItem("isLightMode", true)
+    else if (localStorage.getItem("isLightMode") === "false")
+        localStorage.setItem("isLightMode", false)
+    else 
+        localStorage.setItem("isLightMode", true)
+}
+
+const themeSwitch = function (event) {
+    event.preventDefault();
+
+    if (localStorage.getItem("isLightMode") === "true")
+        localStorage.setItem("isLightMode", false);
+    else
+        localStorage.setItem("isLightMode", true);
+
+    console.log(localStorage.getItem("isLightMode"))
+
+    applyTheme();
+}
+
+function applyTheme() {
+    console.log(document.querySelector("html"))
+    if (localStorage.getItem("isLightMode") === "true") {
+        document.querySelector("html").classList.add("theme-light");
+        document.querySelector("html").classList.remove("theme-dark");
+        document.querySelector("html").classList.add("has-background-info-light");
+        document.querySelector("html").classList.remove("has-background-info-dark");
+        document.querySelector("#theme-switch").classList.add("has-background-warning-light");
+        document.querySelector("#theme-switch").classList.remove("has-background-warning-dark");
+        document.querySelector(".footer").classList.add("has-background-info-light");
+        document.querySelector(".footer").classList.remove("has-background-info-dark");
+    } else {
+        document.querySelector("html").classList.add("theme-dark");
+        document.querySelector("html").classList.remove("theme-light");
+        document.querySelector("html").classList.add("has-background-info-dark");
+        document.querySelector("html").classList.remove("has-background-info-light");
+        document.querySelector("#theme-switch").classList.add("has-background-warning-dark");
+        document.querySelector("#theme-switch").classList.remove("has-background-warning-light");
+        document.querySelector(".footer").classList.add("has-background-info-dark");
+        document.querySelector(".footer").classList.remove("has-background-info-light");
+    }
+}
+
 function init() {
+    themeCheck();
+    applyTheme();
     document.querySelector("#finished-voting").setAttribute("style", "display: none;");
     movieListRefresh();
     movieSuggestionForm.querySelector("#suggest").addEventListener("click", suggestMovie);
@@ -204,6 +248,7 @@ function init() {
     document.querySelector("#finish-voting").addEventListener("click", finishVotingModal);
     document.querySelector("#finish-voting-deny").addEventListener("click", function () {document.querySelector("#finish-voting-modal").classList.remove("is-active");});
     document.querySelector("#finish-voting-accept").addEventListener("click", finishVotingAccept);
+    document.querySelector("#theme-switch").addEventListener("click", themeSwitch);
 }
 
 init();
