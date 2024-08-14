@@ -1,9 +1,11 @@
 # Movie Voting Website
 
 ## Description 
-- Have you ever been at a movie night with friends where you ended up leaving and not watching a movie because your friends couldnt agree on a movie?
-- Our movie voting app is a fun tool to use with friends and family. Our app takes everyones choice into consideration while also using metrics to decide between for example: Barbie the movie or Captain America.
-- Our interactive website allows the user to suggest a movie, vote on a movie and tally up the votes.
+Have you ever been at a movie night with friends where you ended up leaving and not watching a movie because your friends couldnt agree on a movie?
+
+Our movie voting app is a fun tool to use with friends and family. Our app takes everyones choice into consideration while also using metrics to decide between for example: Barbie the movie or Captain America.
+
+Our interactive website allows the user to suggest a movie, vote on a movie and tally up the votes.
 
 ## Usage
 First the user invites other users to suggest a movie.
