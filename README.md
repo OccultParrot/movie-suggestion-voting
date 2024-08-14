@@ -27,7 +27,7 @@ here is what this looks like.
  - Sabrin Othman: https://github.com/sabrinothman6495?tab=repositories
 
 
-## Liscence 
+## license 
 [LICENSE.md](https://github.com/OccultParrot/movie-suggestion-voting/blob/main/LICENSE)
 
 
