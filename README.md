@@ -16,7 +16,7 @@ here is what this looks like.
 
 ![After the suggestions are made, our user is able to click one of the vote buttons thumbs up or down.](assets/images/Movievoting2.jpg)
 ![after clicking the finished voting botton a "Warning" modal is displayed asking user if they are finished voting](assets/images/Movievoting3.jpg)
-![if theuser clicks yes they are then presented with a poll showing the number of votes.](assets/images/Movievoting4.jpg)
+![if the user clicks yes they are then presented with a poll showing the number of votes.](assets/images/Movievoting4.jpg)
 
 
 ## Credits 🏆 
