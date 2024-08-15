@@ -7,12 +7,15 @@ Our movie voting app is a fun tool to use with friends and family. Our app takes
 
 Our interactive website allows the user to suggest a movie, vote on a movie and tally up the votes.
 
-## Usage
-First the user invites other users to suggest a movie.
-Then the users vote on the suggested movies this could be any number suggestion.
-The user is then able to see the results of the voting poll.
-
-here is what this looks like.
+## User Story:
+```md
+As a host i want to be able to either take suggestions or make suggestions on movie night.
+I want to allow guests to vote on suggested movie titles.
+i want a modal to appear when i click finish voting that asks me to confirm whether or not i would like to "finish voting."
+I want to be able to see the winning movie/ lowest voted movies(s).
+I also want a dark/light mode button.
+```
+## Visual Representation
 
 ![Our home page is simple, here we have a suggestion box for our user to suggest movies.](assets/images/Movievoting1.jpg)
 
