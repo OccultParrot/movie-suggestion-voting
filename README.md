@@ -35,3 +35,4 @@ here is what this looks like.
 ## Features
 
 Site has dark and light mode feature. 
+Site is interactive, we use forms and modals to interact with our user.
