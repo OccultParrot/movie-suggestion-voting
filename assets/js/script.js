@@ -25,12 +25,14 @@ function movieListRefresh() {
 
         const upVoteEl = document.createElement("button");
         upVoteEl.classList.add("button");
+        upVoteEl.classList.add("is-soft");
         upVoteEl.classList.add("is-success");
         upVoteEl.classList.add("upvote");
         upVoteEl.classList.add("voting-button");
         upVoteEl.addEventListener("click", upVote);
 
         const downVoteEl = document.createElement("button");
+        downVoteEl.classList.add("is-soft");
         downVoteEl.classList.add("button");
         downVoteEl.classList.add("is-danger");
         downVoteEl.classList.add("downvote");

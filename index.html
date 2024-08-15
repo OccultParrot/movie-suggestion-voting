@@ -3,7 +3,7 @@
 <head class="has-text-danger-dark">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movie Voting Website</title>
+    <title>Movte</title>
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 
@@ -40,16 +40,18 @@
         <h1 id="over" class="title">Movie voting is over</h1> 
         <h2 id="winning" class="subtitle">The winning movie was: </h2> 
         <h2 id="least-voted" class="subtitle"> The leasted voted movie was:</h2>
-        <button id="reset" class="button is-link is-soft"> Voting reset </button> 
+        <button id="reset" class="button is-link"> Voting reset </button> 
     </section>
 
     <form class="section suggest-movie box" id="voting">
         <h2 class="title">Suggest a Movie</h2>
         <input class="input" type="text" id="movieName" placeholder="Enter movie name">
         <input class="input" type="text" id="movieDescription" placeholder="Optionally enter movie description">
+        
         <button type ="button" id = "suggest" class="button is-link is-soft">Suggest</button> 
-        <button type= "button" id = "clear" class="button is-danger">Clear Movies</button>
-        <button type="button" id="finish-voting" class="button is-danger is-pulled-right"><strong>FINISH VOTING</strong></button>
+        <button type= "button" id = "clear" class="button is-danger is-soft">Clear Movies</button>
+        <button type="button" id="finish-voting" class="button is-danger is-soft is-pulled-right"><strong>FINISH VOTING</strong></button>
+      
     </form>
     <section class="section movie-list grid is-col-min-15">
     </section>
