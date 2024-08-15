@@ -1,4 +1,4 @@
-# Movie Voting Website
+# Movie Voting Website/Movte
 
 ## Description 
 Have you ever been at a movie night with friends where you ended up leaving and not watching a movie because your friends couldnt agree on a movie?
